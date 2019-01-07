@@ -9,7 +9,7 @@ if(!key_exists('id', $_GET)) {
 $id = $_GET['id'];
 $city = $cities[$id];
  // include view
- include __DIR__ . '/../view/cities.php';
+ include __DIR__ . '/../view/city.php';
 
 function page_not_found()
 {

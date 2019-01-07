@@ -1,23 +1,25 @@
-<!-- ~/php/tp1/view/cities.php -->
+<!-- ~/php/tp1/view/city.php -->
 <!DOCTYPE HTML>
 <html>
     <head>
         <meta http-equiv="content-type" content="text/html;
             charset=utf-8" />
     </head>
-    <title>All Cities</title>
+    <title>One city</title>
     <body>
-    <h1>All Cities</h1>
-    <table>
-        <?php foreach ($cities as $cityId => $city) : ?>
-        <tr>
-            <td><a href="/city.php?id=<?= $cityId; ?>"><?=
-            $city['name']; ?></a></td>
-            <td><?= $city['country']; ?></td>
-            <td>Quality of life: <?= $city['life']; ?></td> <!--added property life-->
-        </tr>
-        
-        <?php endforeach; ?>
-    </table>
+    <h1>City <?= $city['name'] ?></h1>
+        <p>
+            Name of the city: <?= $city['name']; ?>
+        </p>
+        <p>
+            Country: <?= $city['country']; ?>
+        </p>
+        <p>
+            Quality of life: <?= $city['life']; ?>
+        </p>
+
+        <a href="/cities.php">
+            Back to list of cities
+        </a>
     </body>
 </html>

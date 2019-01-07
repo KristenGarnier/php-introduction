@@ -5,19 +5,19 @@
         <meta http-equiv="content-type" content="text/html;
             charset=utf-8" />
     </head>
-    <title>One city</title>
+    <title>All Cities</title>
     <body>
-    <h1>City <?= $city['name'] ?></h1>
+    <h1>All Cities</h1>
     <table>
-        <p>
-            Name of the city: <?= $city['name']; ?>
-        </p>
-        <p>
-            Country: <?= $city['country']; ?>
-        </p>
-        <p>
-            Quality of life: <?= $city['life']; ?>
-        </p>
+        <?php foreach ($cities as $cityId => $city) : ?>
+        <tr>
+            <td><a href="/city.php?id=<?= $cityId; ?>"><?=
+            $city['name']; ?></a></td>
+            <td><?= $city['country']; ?></td>
+            <td>Quality of life: <?= $city['life']; ?></td> <!--added property life-->
+        </tr>
+        
+        <?php endforeach; ?>
     </table>
     </body>
 </html>
