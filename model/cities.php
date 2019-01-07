@@ -1,18 +1,12 @@
 <?php
  // ~/php/tp1/model/cities.php
-$cities = array(
-    [ "name" => "San Francisco", "country" => "USA", "life" =>  "A"],
-    [ "name" => "Paris", "country" => "France", "life" =>  "A"],
-    [ "name" => "New york", "country" => "USA", "life" =>  "A"],
-    [ "name" => "Berlin", "country" => "Germany", "life" =>  "A"],
-    [ "name" => "Bamako", "country" => "Malia" , "life" =>  "C"],
-    [ "name" => "Buenos Aires",  "country" => "Argentina", "life" =>  "A" ],
-    [ "name" => "Santiago", "country" => "Chile" , "life" =>  "C"],
-    [ "name" => "Bombay", "country" => "India", "life" =>  "A" ],
-    [ "name" => "Vancouver", "country" => "Canada", "life" =>  "A" ],
-    [ "name" => "Le Puy en Velay", "country" => "France", "life" =>  "B" ], // Added
-    [ "name" => "London", "country" => "England", "life" =>  "A"], // Added
-    [ "name" => "Madrid", "country" => "Spain", "life" =>  "A"] // Added
-);
+ $cities = [];
+ if (($handle = fopen("cities.csv", "r", true)) !== FALSE) {
+    while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+        $item = explode(';', $data[0]);
+        array_push($cities, [ 'name' => $item[0], 'country' => $item[1], 'life' => $item[2]]);
+    }
+    fclose($handle);
+}
 
 sort($cities); // Sort element in the array, By default the first property of the associative array
