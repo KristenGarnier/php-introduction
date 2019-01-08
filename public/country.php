@@ -28,8 +28,11 @@
     die(); // arrête l’exécution du script
 }
 
+/**
+ * Check whenever country exists in the array
+ */
 function do_country_exists($name, $cities) {
-    $result = false;
+    $result = false; // initialize result to false ==> Should stay that way if no country found
     foreach($cities as $city) {
         if( $city['country'] === $name ) { // Check if country does not already exists in array
             $result = true;
