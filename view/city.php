@@ -7,7 +7,7 @@
     </head>
     <title>One city</title>
     <body>
-    <h1>City <?= $params['city']['name'] ?></h1>
+    <h1>City <?= $params['city']['name']  // on utilise params car toutes les informations sont contenues dans cette variable?></h1>
         <p>
             Name of the city: <?= $params['city']['name']; ?>
         </p>

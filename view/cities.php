@@ -8,7 +8,7 @@
     <title>All Cities</title>
     <body>
     <h1>All Cities</h1>
-    <?php if($params['flash']) {
+    <?php if($params['flash']) { // on utilise params car toutes les informations sont contenues dans cette variable
         echo "
            <p style='color: green'>
             " . $params['flash'] . " 

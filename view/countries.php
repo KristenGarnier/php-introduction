@@ -9,7 +9,7 @@
     <body>
     <h1>All Countries</h1>
     <table>
-        <?php foreach ($params['countries'] as $country) : ?>
+        <?php foreach ($params['countries'] as $country) :  // on utilise params car toutes les informations sont contenues dans cette variable?>
         <tr>
             <td><a href="/country.php?name=<?= $country; ?>"><?=
             $country; ?></a></td>

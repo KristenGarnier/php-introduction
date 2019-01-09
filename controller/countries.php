@@ -1,6 +1,7 @@
 <?php
 include_once __DIR__ . '/contollerBase.php'; // On utilise include once ici, pour être sur de ne pas l'inclure deux fois dans le cas d'un site avec multiples controllers
 
+// Pour comprendre ce fichier, se référer à city.php dans le même dossier
 class CountryController extends ContollerBase {
     public function __construct($model)
     {
