@@ -1,11 +1,15 @@
 <?php
  // ~/php/tp1/public/cities.php
  // include model
+include __DIR__ . '/../database/db.php';
+
  include __DIR__ . '/../model/cities.php';
  if(!key_exists('name', $_GET)) {
     page_not_found();
  }
  $country = $_GET['name'];
+
+$cities = modelFetchAll($dbh);
 
  if(!do_country_exists($country, $cities)) {
     page_not_found();

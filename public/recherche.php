@@ -1,18 +1,20 @@
 <?php
  // ~/php/tp1/public/cities.php
- // include model
-include __DIR__ . '/../database/db.php';
 
+ // include db
+ include __DIR__ . '/../database/db.php';
+ // include model
  include __DIR__ . '/../model/cities.php';
-if(!key_exists('id', $_GET)) {
+
+if(!key_exists('search', $_GET)) { // On vérfie si la référence est bien passée
     page_not_found();
 }
 
-$id = $_GET['id'];
-$cities = modelFetchAll($dbh);
-$city = $cities[$id];
+$search = $_GET['search'];
+$cities = modelSearchByName($dbh, $search);
+
  // include view
- include __DIR__ . '/../view/city.php';
+include __DIR__ . '/../view/cities.php';
 
 function page_not_found()
 {
