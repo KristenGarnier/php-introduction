@@ -8,15 +8,15 @@
     <title>All Cities</title>
     <body>
     <h1>All Cities</h1>
-    <?php if($flash) {
+    <?php if($params['flash']) {
         echo "
            <p style='color: green'>
-            " . $flash . " 
+            " . $params['flash'] . " 
            </p>
         ";
     } ?>
     <table>
-        <?php foreach ($cities as $cityId => $city) : ?>
+        <?php foreach ($params['cities'] as $cityId => $city) : ?>
         <tr>
             <td><a href="/city.php?id=<?= $cityId; ?>"><?=
             $city['name']; ?></a></td>

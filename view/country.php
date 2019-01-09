@@ -7,9 +7,9 @@
     </head>
     <title>All cities</title>
     <body>
-    <h1>All cities from <?= $country; ?></h1>
+    <h1>All cities from <?= $params['country']; ?></h1>
     <table>
-        <?php foreach ($citiesFromCountry as $city) : ?>
+        <?php foreach ($params['countries'] as $city) : ?>
         <tr>
             <td><?= $city['name']; ?></td>
         </tr>

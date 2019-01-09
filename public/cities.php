@@ -1,12 +1,10 @@
 <?php
- // ~/php/tp1/public/cities.php
 
- // include db
- include __DIR__ . '/../database/db.php';
- // include model
- include __DIR__ . '/../model/cities.php';
+include __DIR__ . '/../database/db.php';
+include __DIR__ . '/../model/cities.php';
+include __DIR__ . '/../controller/city.php';
 
-$cities = modelFetchAll($dbh);
-
-// include view
- include __DIR__ . '/../view/cities.php';
+$db = new Database();// Création d'une instance de base de donnée, utilisée pour la connexion avec la base de donnée
+$cityModel = new CityModel($db);
+$controller = new CityController($cityModel);
+$controller->citiesHandler();
