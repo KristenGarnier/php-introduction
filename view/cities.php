@@ -16,7 +16,7 @@
         ";
     } ?>
     <table>
-        <?php foreach ($cities as $cityId => $city) : ?>
+        <?php foreach ($params['cities'] as $cityId => $city) : ?>
         <tr>
             <td><a href="/city.php?id=<?= $cityId; ?>"><?=
             $city['name']; ?></a></td>
