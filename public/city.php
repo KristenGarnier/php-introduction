@@ -17,6 +17,6 @@ $city = $cities[$id];
 function page_not_found()
 {
     header("HTTP/1.0 404 Not Found"); //On définit la page comme étant une page 404 au sein de l’entête
-    include __DIR__ . '/../view/404.html'; // On ajoute la vue de la page 404
+    include __DIR__ . '/../view/404.php'; // On ajoute la vue de la page 404
     die(); // arrête l’exécution du script
 }

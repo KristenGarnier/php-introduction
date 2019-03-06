@@ -11,9 +11,15 @@ class CityModel implements CitiesInterface {
     }
 
     public function findAll() : Array {
-        $query = $this->conn->prepare('SELECT c.name, c.country, c.life FROM city c ORDER BY c.name'); // Création de la requête + utilisation order by pour ne pas utiliser sort
+        $query = $this->conn->prepare('SELECT c.id, c.name, c.country, c.life FROM city c ORDER BY c.name'); // Création de la requête + utilisation order by pour ne pas utiliser sort
         $query->execute(); // Exécution de la requête
         return $query->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    public function findOne(int $id) {
+        $query = $this->conn->prepare('SELECT c.name, c.country, c.life FROM city c WHERE c.id = :id'); // Création de la requête + utilisation order by pour ne pas utiliser sort
+        $query->execute([':id' => $id]); // Exécution de la requête
+        return $query->fetch(\PDO::FETCH_ASSOC);
     }
 
     public function search($searchString) {

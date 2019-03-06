@@ -18,7 +18,7 @@
     <table>
         <?php foreach ($params['cities'] as $cityId => $city) : ?>
         <tr>
-            <td><a href="/city.php?id=<?= $cityId; ?>"><?=
+            <td><a href="/city/<?= $city['id']; ?>"><?=
             $city['name']; ?></a></td>
             <td><?= $city['country']; ?></td>
             <td>Quality of life: <?= $city['life']; ?></td> <!--added property life-->
