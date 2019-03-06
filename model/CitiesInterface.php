@@ -5,6 +5,7 @@
  * Date: 2019-02-28
  * Time: 11:00
  */
+namespace Model;
 
 interface CitiesInterface
 {

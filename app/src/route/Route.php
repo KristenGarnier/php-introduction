@@ -5,6 +5,7 @@
  * Date: 2019-03-05
  * Time: 16:38
  */
+namespace App\Src\Route;
 
 class Route {
     /**

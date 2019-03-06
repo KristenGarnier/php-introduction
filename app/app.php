@@ -1,9 +1,23 @@
 <?php
-require_once __DIR__ . '/../database/db.php';
-require_once __DIR__ . '/src/app.php';
-require_once __DIR__ . '/routing.php';
+namespace App;
 
-$app = new App();
+use App\Src\App;
+use App\Src\ServiceContainer\ServiceContainer;
+use Database\Database;
+use Model\CityModel;
+
+$container = new ServiceContainer();
+$app = new App($container);
+
+$app->setService('database', new Database(
+    "127.0.0.1",
+    "citytowns",
+    "root",
+    "root",
+    "8889"
+));
+$app->setService('cityModel', new CityModel($app->getService('database')));
+
 $routing = new Routing($app);
 $routing->setup();
 

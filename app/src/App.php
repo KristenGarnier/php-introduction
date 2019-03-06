@@ -5,8 +5,10 @@
  * Date: 2019-03-05
  * Time: 16:23
  */
+namespace App\Src;
 
-require_once __DIR__ . '/route/route.php';
+use App\Src\ServiceContainer\ServiceContainer;
+use App\Src\Route\Route;
 
 class App
 {
@@ -21,9 +23,37 @@ class App
     private $routes = array();
 
     /**
+     * @var ServiceContainer
+     */
+    private $serviceContainer;
+
+    /**
+     * @return Mixed
+     *
+     * @param String $serviceName Name of the service to retrieve
+     */
+    public function getService(string $serviceName)
+    {
+        return $this->serviceContainer->get($serviceName);
+    }
+
+    /**
+     * @param String $serviceName Name of the service to retrieve
+     * @param Mixed $assigned Value / function / class stored in the service
+     */
+    public function setService(string $serviceName, $assigned)
+    {
+        $this->serviceContainer->set($serviceName, $assigned);
+    }
+
+    /**
      * @var statusCode
      */
     private $statusCode;
+
+    public function __construct(ServiceContainer $serviceContainer) {
+        $this->serviceContainer = $serviceContainer;
+    }
 
     public function get($pattern, $callable) {
         $this->registerRoute(self::GET, $pattern, $callable);

@@ -1,6 +1,9 @@
 <?php
 
-require_once("CitiesInterface.php");
+namespace Model;
+
+use Model\CitiesInterface;
+use Database\Database;
 
 class CityModel implements CitiesInterface {
 

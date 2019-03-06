@@ -5,17 +5,19 @@
  * Date: 2019-02-28
  * Time: 15:10
  */
+namespace Controller;
 
-require_once ('ControllerBase.php');
+use Controller\ControllerBase;
+use App\Src\App;
 
 class CityController extends ControllerBase
 {
-    public function __construct($model) {
-        parent::__construct($model);
+    public function __construct(App $app) {
+        parent::__construct($app);
     }
 
     public function citiesHandler() {
-        $cities = $this->model->findAll();
+        $cities = $this->app->getService('cityModel')->findAll();
         $this->render('cities', ["cities" => $cities]);
     }
 
@@ -23,7 +25,7 @@ class CityController extends ControllerBase
         if(!$id) { // On vérifie si on a bien les informations
             $this->render('404'); // On affiche la page 404 si il n'y  a pas ce que l'on veut
         }
-        $city = $this->model->findOne($id); // Récupération des cities
+        $city = $this->app->getService('cityModel')->findOne($id); // Récupération des cities
         $this->render('city', ['city' => $city]); // Envoi de la ville choisie
     }
 }
