@@ -5,6 +5,7 @@ use App\Src\App;
 use App\Src\ServiceContainer\ServiceContainer;
 use Database\Database;
 use Model\CityModel;
+use Model\Finder\CityFinder;
 
 $container = new ServiceContainer();
 $app = new App($container);
@@ -16,7 +17,8 @@ $app->setService('database', new Database(
     "root",
     "8889"
 ));
-$app->setService('cityModel', new CityModel($app->getService('database')));
+
+$app->setService('cityFinder', new CityFinder($app));
 
 $routing = new Routing($app);
 $routing->setup();
