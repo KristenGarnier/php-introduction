@@ -71,17 +71,15 @@ class App
             }
         }
 
-        throw new HttpException(404, "Page not found");
+        throw new \Exception(404, "Page not found");
     }
 
     private function process(Route $route) {
         try {
             http_response_code($this->statusCode);
             echo call_user_func_array($route->getCallable(), $route->getArguments());
-        } catch (HttpException $e) {
-            throw $e;
         } catch (\Exception $e) {
-            throw new HttpException(500, null, $e);
+            throw $e;
         }
     }
 
