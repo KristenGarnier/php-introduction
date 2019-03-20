@@ -17,7 +17,7 @@ class CityController extends ControllerBase
     }
 
     public function citiesHandler() {
-        $cities = $this->app->getService('cityModel')->findAll();
+        $cities = $this->app->getService('cityFinder')->findAll();
         $this->render('cities', ["cities" => $cities]);
     }
 
@@ -25,7 +25,7 @@ class CityController extends ControllerBase
         if(!$id) { // On vérifie si on a bien les informations
             $this->render('404'); // On affiche la page 404 si il n'y  a pas ce que l'on veut
         }
-        $city = $this->app->getService('cityModel')->findOne($id); // Récupération des cities
+        $city = $this->app->getService('cityFinder')->findOneById($id); // Récupération des cities
         $this->render('city', ['city' => $city]); // Envoi de la ville choisie
     }
 }
