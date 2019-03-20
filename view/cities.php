@@ -16,12 +16,12 @@
         ";
     } ?>
     <table>
-        <?php foreach ($params['cities'] as $cityId => $city) : ?>
+        <?php foreach ($params['cities'] as $city) : ?>
         <tr>
-            <td><a href="/city/<?= $city['id']; ?>"><?=
-            $city['name']; ?></a></td>
-            <td><?= $city['country']; ?></td>
-            <td>Quality of life: <?= $city['life']; ?></td> <!--added property life-->
+            <td><a href="/city/<?= $city->getId(); ?>"><?=
+            $city->getName(); ?></a></td>
+            <td><?= $city->getCountry(); ?></td>
+            <td>Quality of life: <?= $city->getLife(); ?></td> <!--added property life-->
         </tr>
         
         <?php endforeach; ?>
