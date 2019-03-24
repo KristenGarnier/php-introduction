@@ -7,6 +7,7 @@
  */
 namespace Controller;
 
+use App\Src\Request\Request;
 use Controller\ControllerBase;
 use App\Src\App;
 
@@ -16,16 +17,16 @@ class CityController extends ControllerBase
         parent::__construct($app);
     }
 
-    public function citiesHandler() {
+    public function citiesHandler(Request $request) {
         $cities = $this->app->getService('cityFinder')->findAll();
-        $this->render('cities', ["cities" => $cities]);
+        return $this->render('cities', ["cities" => $cities]);
     }
 
-    public function cityHandler($id) {
+    public function cityHandler(Request $request, $id) {
         if(!$id) { // On vérifie si on a bien les informations
             $this->render('404'); // On affiche la page 404 si il n'y  a pas ce que l'on veut
         }
         $city = $this->app->getService('cityFinder')->findOneById($id); // Récupération des cities
-        $this->render('city', ['city' => $city]); // Envoi de la ville choisie
+        return $this->render('city', ['city' => $city]); // Envoi de la ville choisie
     }
 }

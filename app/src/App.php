@@ -7,15 +7,13 @@
  */
 namespace App\Src;
 
+use App\Src\Request\Request;
+use App\Src\Response\Response;
 use App\Src\ServiceContainer\ServiceContainer;
 use App\Src\Route\Route;
 
 class App
 {
-    const GET = 'GET';
-    const POST = 'POST';
-    const PUT = 'PUT';
-    const DELETE = 'DELETE';
 
     /**
      * @var array
@@ -56,28 +54,41 @@ class App
     }
 
     public function get($pattern, $callable) {
-        $this->registerRoute(self::GET, $pattern, $callable);
+        $this->registerRoute(Request::GET, $pattern, $callable);
 
         return $this;
     }
 
-    public function run() {
-        $method = $_SERVER['REQUEST_METHOD'] ?? self::GET;
-        $uri = $_SERVER['REQUEST_URI'] ?? '/';
+    public function run(Request $request = null) {
+        if($request === null) {
+            $request = Request::createFromGlobals();
+        }
+        $method = $request->getMethod();
+        $uri = $request->getUri();
 
         foreach ($this->routes as $route) {
             if($route->match($method, $uri)) {
-                return $this->process($route);
+                return $this->process($route, $request);
             }
         }
 
         throw new \Exception(404, "Page not found");
     }
 
-    private function process(Route $route) {
+    private function process(Route $route, Request $request) {
         try {
-            http_response_code($this->statusCode);
-            echo call_user_func_array($route->getCallable(), $route->getArguments());
+            $arguments = $route->getArguments();
+            array_unshift($arguments, $request);
+            $content = call_user_func_array($route->getCallable(), $arguments);
+
+            if($content instanceof Response) {
+                $content->send();
+                return;
+            }
+
+            $response = new Response($content, $this->statusCode);
+            $response->send();
+
         } catch (\Exception $e) {
             throw $e;
         }

@@ -8,6 +8,7 @@
 namespace Controller;
 
 use App\Src\App;
+use App\Src\Response\Response;
 
 abstract class ControllerBase
 {
@@ -18,14 +19,16 @@ abstract class ControllerBase
     }
 
     protected function render(String $template, Array $params = []) {
-
-        if($template === '404') {
-            header("HTTP/1.0 404 Not Found");
-        }
-
         ob_start();
         include __DIR__ . '/../view/' . $template . '.php';
-        ob_end_flush();
-        die();
+        $content = ob_get_contents();
+        ob_end_clean();
+
+        if($template === '404') {
+            $response = new Response($content, '404', ['HTTP/1.0 404 Not Found']);
+            return $response;
+        }
+
+        return $content;
     }
 }
