@@ -26,7 +26,7 @@ class CityFinder implements FinderInterface
     }
 
     /**
-     * Fetch all cities form the database
+     * Fetch all cities form the Database
      *
      * @return array|null
      */
@@ -48,7 +48,7 @@ class CityFinder implements FinderInterface
     }
 
     /**
-     * Fetch one city by id from the database
+     * Fetch one city by id from the Database
      *
      * @param int $id id of the city to fetch
      * @return CityGateway|null

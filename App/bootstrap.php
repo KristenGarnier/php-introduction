@@ -4,7 +4,6 @@ namespace App;
 use App\Src\App;
 use App\Src\ServiceContainer\ServiceContainer;
 use Database\Database;
-use Model\CityModel;
 use Model\Finder\CityFinder;
 
 $container = new ServiceContainer();

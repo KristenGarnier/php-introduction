@@ -115,7 +115,7 @@ class CityGateway
     }
 
     /**
-     * Insert CityGateway in the database table
+     * Insert CityGateway in the Database table
      *
      * @throws \Error;
      */
@@ -133,7 +133,7 @@ class CityGateway
     }
 
     /**
-     * Update CityGateway  in the database
+     * Update CityGateway  in the Database
      *
      * @throws \Error;
      */
@@ -152,7 +152,7 @@ class CityGateway
     }
 
     /**
-     * Delete CityGateway instance in the database
+     * Delete CityGateway instance in the Database
      *
      * @throws \Error;
      */
@@ -168,7 +168,7 @@ class CityGateway
     }
 
     /**
-     * Hydrate the object from values in the database
+     * Hydrate the object from values in the Database
      *
      * @param array $elem Associative array containing the data information
      */

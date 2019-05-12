@@ -20,7 +20,7 @@ abstract class ControllerBase
 
     protected function render(String $template, Array $params = []) {
         ob_start();
-        include __DIR__ . '/../view/' . $template . '.php';
+        include __DIR__ . '/../View/' . $template . '.php';
         $content = ob_get_contents();
         ob_end_clean();
 
